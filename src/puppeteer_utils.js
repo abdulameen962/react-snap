@@ -1,4 +1,4 @@
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
 const _ = require("highland");
 const url = require("url");
 const mapStackTrace = require("sourcemapped-stacktrace-node").default;
