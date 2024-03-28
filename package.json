@@ -5,7 +5,7 @@
   "main": "index.js",
   "author": "stereobooster",
   "license": "MIT",
-  "repository": "stereobooster/react-snap",
+  "repository": "abdulameen962/react-snap",
   "engines": {
     "node": ">= 8.6.0"
   },
