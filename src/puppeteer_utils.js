@@ -1,3 +1,4 @@
+const chromium = require("@sparticuz/chromium");
 const puppeteer = require("puppeteer-core");
 const _ = require("highland");
 const url = require("url");
@@ -194,13 +195,23 @@ const crawl = async opt => {
     }
   };
 
+  try{
   const browser = await puppeteer.launch({
-    headless: options.headless,
-    args: options.puppeteerArgs,
-    executablePath: options.puppeteerExecutablePath,
+    headless: chromium.headless,
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath(),
     ignoreHTTPSErrors: options.puppeteerIgnoreHTTPSErrors,
     handleSIGINT: false
   });
+}
+catch (error) {
+  return callback(error);
+} finally {
+  if (browser !== null) {
+    await browser.close();
+  }
+}
 
   /**
    * @param {string} pageUrl
